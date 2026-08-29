@@ -14,8 +14,12 @@
 <url><loc>https://your-domain.example/pages/seo-for-technical-writers.html</loc></url>
 <url><loc>https://your-domain.example/pages/state-of-open-source-2026.html</loc></url>
 <url><loc>https://your-domain.example/pages/designing-for-dark-mode.html</loc></url>
-  <url>
+<url>
     <loc>https://your-domain.example/ai-news-2026-google-ai-search-gemini-ai-agents</loc>
+    <lastmod>2026-08-29</lastmod>
+  </url>
+  <url>
+    <loc>https://your-domain.example/google-ai-search-agents-2026-gemini</loc>
     <lastmod>2026-08-29</lastmod>
   </url>
 </urlset>
