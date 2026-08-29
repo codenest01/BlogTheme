@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin | Signal</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body data-root="../" data-page="admin">
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <div class="admin-wrap">
+
+    <div id="admin-login-view" class="admin-login">
+      <h1>Admin sign in</h1>
+      <p>Enter the admin password to manage posts, ads, and pages. You'll stay signed in on this device until you log out.</p>
+      <div id="login-status"></div>
+      <div class="admin-field">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary" id="login-btn" style="width:100%;">Sign in</button>
+    </div>
+
+    <div id="admin-dashboard-view" class="hidden">
+      <div class="admin-header">
+        <h1>Admin</h1>
+        <div style="display:flex; gap:10px;">
+          <button class="btn btn-outline btn-sm" id="logout-btn">Log out</button>
+        </div>
+      </div>
+
+      <div id="dashboard-status"></div>
+
+      <div class="admin-tabs" role="tablist">
+        <button class="admin-tab-btn active" data-tab="posts" type="button">Posts</button>
+        <button class="admin-tab-btn" data-tab="bulk" type="button">Bulk add</button>
+        <button class="admin-tab-btn" data-tab="ads" type="button">Ads</button>
+        <button class="admin-tab-btn" data-tab="raw" type="button">Pages (raw HTML)</button>
+      </div>
+
+      <!-- ============ TAB: Posts ============ -->
+      <div class="admin-tab-panel" id="tab-posts">
+        <div style="display:flex; justify-content:flex-end; margin-bottom:16px;">
+          <button class="btn btn-primary btn-sm" id="new-post-btn">+ New post</button>
+        </div>
+
+        <div class="admin-card" id="post-form-card" style="display:none;">
+          <h2 id="form-heading" style="margin-top:0; font-family:var(--font-display);">New post</h2>
+          <div id="form-status"></div>
+          <form id="post-form">
+            <input type="hidden" id="f-original-slug">
+
+            <div class="admin-field">
+              <label for="f-title">Title</label>
+              <input type="text" id="f-title" required>
+            </div>
+
+            <div class="admin-row">
+              <div class="admin-field">
+                <label for="f-slug">URL slug (leave blank to auto-generate)</label>
+                <input type="text" id="f-slug" placeholder="my-post-title">
+                <div class="admin-hint">Page will live at /pages/&lt;slug&gt;.html and be reachable at /&lt;slug&gt;</div>
+              </div>
+              <div class="admin-field">
+                <label for="f-category">Category</label>
+                <select id="f-category">
+                  <option>Technology</option>
+                  <option>AI</option>
+                  <option>Blogging</option>
+                  <option>Web Development</option>
+                  <option>Tutorials</option>
+                  <option>Digital Marketing</option>
+                  <option>News</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="admin-row">
+              <div class="admin-field">
+                <label for="f-author">Author</label>
+                <input type="text" id="f-author" value="Staff Writer">
+              </div>
+              <div class="admin-field">
+                <label for="f-date">Published date</label>
+                <input type="date" id="f-date">
+              </div>
+            </div>
+
+            <div class="admin-field">
+              <label for="f-excerpt">Excerpt / meta description (shown on cards and used for SEO — aim for under 160 characters)</label>
+              <textarea id="f-excerpt" style="min-height:60px; font-family:var(--font-body);"></textarea>
+            </div>
+
+            <div class="admin-row">
+              <div class="admin-field">
+                <label for="f-tags">Tags (comma separated — also used as SEO keywords)</label>
+                <input type="text" id="f-tags" placeholder="CSS, Frontend, Tutorials">
+              </div>
+              <div class="admin-field">
+                <label for="f-image">Cover image URL</label>
+                <input type="url" id="f-image" placeholder="https://...">
+              </div>
+            </div>
+
+            <div class="admin-checks">
+              <label><input type="checkbox" id="f-featured"> Featured</label>
+              <label><input type="checkbox" id="f-popular"> Popular</label>
+            </div>
+
+            <div class="admin-field">
+              <label for="f-content">Article content (HTML)</label>
+              <textarea id="f-content" class="admin-content" placeholder="&lt;p&gt;Write your article body here using HTML tags: &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;blockquote&gt;, &lt;img&gt;, etc.&lt;/p&gt;" required></textarea>
+              <div class="admin-hint">This is inserted as the article body. Title, meta tags, schema.org data, and the 5 ad slots are added automatically.</div>
+            </div>
+
+            <div style="display:flex; gap:10px;">
+              <button type="submit" class="btn btn-primary" id="save-btn">Save post</button>
+              <button type="button" class="btn btn-outline" id="cancel-form-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="admin-card">
+          <h2 style="margin-top:0; font-family:var(--font-display);">All posts</h2>
+          <div id="posts-list"><div class="admin-empty">Loading…</div></div>
+        </div>
+      </div>
+
+      <!-- ============ TAB: Bulk add ============ -->
+      <div class="admin-tab-panel hidden" id="tab-bulk">
+        <div class="admin-card">
+          <h2 style="margin-top:0; font-family:var(--font-display);">Bulk add posts</h2>
+          <p class="admin-hint" style="margin-bottom:16px;">Add up to 10 posts in one go. Each gets the same full SEO treatment (meta tags, Open Graph, Twitter card, schema.org JSON-LD, sitemap entry, clean-URL redirect) and the same 5 ad slots as a single post.</p>
+          <div id="bulk-status"></div>
+          <div id="bulk-items"></div>
+          <div class="bulk-toolbar">
+            <button type="button" class="btn btn-outline btn-sm" id="bulk-add-item-btn">+ Add another post</button>
+            <button type="button" class="btn btn-primary" id="bulk-save-btn">Save all posts</button>
+          </div>
+          <div id="bulk-results"></div>
+        </div>
+      </div>
+
+      <!-- ============ TAB: Ads ============ -->
+      <div class="admin-tab-panel hidden" id="tab-ads">
+        <div class="admin-card">
+          <h2 style="margin-top:0; font-family:var(--font-display);">Ad placements</h2>
+          <p class="admin-hint" style="margin-bottom:16px;">Paste each network's raw embed/script code below. Leave a field blank to turn that slot off. These slots render automatically — the first 5 on every page, the "bottom of article" slots and timer on article pages only, and the top-right ad on every page.</p>
+          <div id="ads-status"></div>
+          <form id="ads-form">
+
+            <div class="admin-field">
+              <div class="ad-field-title">1. Top of page (above the title)</div>
+              <textarea id="ad-top" placeholder="&lt;script&gt;...&lt;/script&gt; or &lt;ins class=&quot;adsbygoogle&quot;...&gt;"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">2. In-article — first slot (about 1/3 down)</div>
+              <textarea id="ad-in1"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">3. In-article — second slot (about 2/3 down)</div>
+              <textarea id="ad-in2"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">4. Sidebar</div>
+              <textarea id="ad-sidebar"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">5. Sticky bar (bottom of screen, dismissible)</div>
+              <textarea id="ad-sticky"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">6. Bottom of article — first ad (appears before the continue timer)</div>
+              <textarea id="ad-bottom1"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">7. Bottom of article — second ad (fixed: stays visible while scrolling up or down)</div>
+              <textarea id="ad-bottom2"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">8. Top-right corner (sticky, every page)</div>
+              <textarea id="ad-topright"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">Continue timer — redirect link</div>
+              <p class="admin-hint" style="margin:0 0 8px;">Shown between the two bottom-of-article ads. When the countdown finishes, the Continue button sends the reader here.</p>
+              <input type="url" id="timer-url" placeholder="https://example.com/your-link">
+            </div>
+
+            <div class="admin-field">
+              <div class="ad-field-title">Continue timer — countdown length (seconds)</div>
+              <input type="number" id="timer-seconds" min="1" max="600" step="1" placeholder="30">
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="ads-save-btn">Save ad slots</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ============ TAB: Raw HTML pages ============ -->
+      <div class="admin-tab-panel hidden" id="tab-raw">
+        <div class="admin-card">
+          <h2 style="margin-top:0; font-family:var(--font-display);">Edit a page's raw HTML</h2>
+          <p class="admin-hint" style="margin-bottom:16px;">Pick a page below, or type a new path to create one. Whatever you save here replaces the entire file — HTML, embedded &lt;style&gt;, and embedded &lt;script&gt; — exactly as pasted.</p>
+          <div id="raw-status"></div>
+          <div class="raw-page-list" id="raw-page-list"><div class="admin-empty">Loading…</div></div>
+
+          <div class="admin-row">
+            <div class="admin-field" style="flex:2;">
+              <label for="raw-path">Page path</label>
+              <input type="text" id="raw-path" placeholder="pages/my-new-page.html or index.html">
+              <div class="admin-hint">Must be <code>index.html</code> or a file directly inside <code>pages/</code>.</div>
+            </div>
+            <div class="admin-field" style="flex:1; align-self:flex-end;">
+              <button type="button" class="btn btn-outline" id="raw-load-btn" style="width:100%;">Load</button>
+            </div>
+          </div>
+
+          <div class="admin-field">
+            <label for="raw-html">Full page source</label>
+            <textarea id="raw-html" class="admin-raw-code" placeholder="&lt;!DOCTYPE html&gt;..."></textarea>
+          </div>
+
+          <button type="button" class="btn btn-primary" id="raw-save-btn">Save page</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="../assets/js/script.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

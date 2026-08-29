@@ -1,0 +1,5 @@
+# Managed automatically by the admin panel (netlify/functions/posts-save.js
+# and posts-delete.js). Each published post gets a line like:
+#   /my-post-slug   /pages/my-post-slug.html   200
+# You can also add your own redirects below this comment block if needed.
+/ai-news-2026-google-ai-search-gemini-ai-agents  /pages/ai-news-2026-google-ai-search-gemini-ai-agents.html  200

@@ -1,0 +1,280 @@
+<!--
+  Reference copy only — not loaded directly by any page.
+
+  Static HTML server-side includes (SSI) aren't reliably supported on
+  Netlify's default static hosting without extra configuration, and
+  client-side `fetch()` of a separate .html partial fails under the
+  file:// protocol during local testing and adds a network waterfall
+  in production. Instead, every page loads assets/js/script.js, which
+  injects this exact markup into `<header class="site-header" id="site-header"></header>`
+  at runtime. Edit the `headerHTML()` function in assets/js/script.js
+  to change the header on every page at once.
+-->
+```html
+<header class="site-header">
+  <div class="header-inner container">
+
+    <!-- Logo -->
+    <a href="/index.html" class="logo" aria-label="Next_Talks Home">
+      Next_Talks<span class="logo-dot">.</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="main-nav" id="main-nav" aria-label="Primary navigation">
+      <ul>
+        <li>
+          <a href="/index.html">Home</a>
+        </li>
+
+        <li>
+          <a href="/pages/rise-of-edge-computing.html">Blog</a>
+        </li>
+
+        <li>
+          <a href="/index.html#categories">Categories</a>
+        </li>
+
+        <li>
+          <a href="/pages/about.html">About</a>
+        </li>
+
+        <li>
+          <a href="/pages/contact.html">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+
+      <!-- Search -->
+      <button
+        type="button"
+        class="btn-icon"
+        id="search-open"
+        aria-label="Open search"
+        title="Search">
+        Search
+      </button>
+
+      <!-- Theme Toggle -->
+      <button
+        type="button"
+        class="btn-icon theme-toggle"
+        id="theme-toggle"
+        aria-label="Toggle dark mode"
+        title="Toggle dark mode">
+        Theme
+      </button>
+
+      <!-- Mobile Menu -->
+      <button
+        type="button"
+        class="hamburger"
+        id="hamburger"
+        aria-label="Open navigation menu"
+        aria-controls="main-nav"
+        aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+```
+
+### Optional CSS for the updated header
+
+```css
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--bg, #ffffff);
+  border-bottom: 1px solid var(--border, #e5e7eb);
+}
+
+.header-inner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.logo {
+  color: var(--text, #111827);
+  text-decoration: none;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.logo-dot {
+  color: #6366f1;
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  color: var(--text, #111827);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: #6366f1;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-icon {
+  border: 1px solid var(--border, #e5e7eb);
+  background: transparent;
+  color: var(--text, #111827);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.btn-icon:hover {
+  background: var(--surface, #f3f4f6);
+}
+
+.hamburger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 9px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin: 5px 0;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    min-height: 64px;
+  }
+
+  .hamburger {
+    display: block;
+    color: var(--text, #111827);
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 15px 20px;
+    background: var(--bg, #ffffff);
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .main-nav.active {
+    display: block;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .main-nav li {
+    border-bottom: 1px solid var(--border, #e5e7eb);
+  }
+
+  .main-nav li:last-child {
+    border-bottom: 0;
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 14px 5px;
+  }
+
+  .header-actions .btn-icon {
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-actions .btn-icon {
+    font-size: 0.75rem;
+    padding: 7px 9px;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+}
+```
+
+### JavaScript for the hamburger menu
+
+```js
+const hamburger = document.getElementById("hamburger");
+const mainNav = document.getElementById("main-nav");
+
+if (hamburger && mainNav) {
+  hamburger.addEventListener("click", () => {
+    const isOpen = hamburger.getAttribute("aria-expanded") === "true";
+
+    hamburger.setAttribute("aria-expanded", String(!isOpen));
+    hamburger.setAttribute(
+      "aria-label",
+      isOpen ? "Open navigation menu" : "Close navigation menu"
+    );
+
+    mainNav.classList.toggle("active", !isOpen);
+  });
+
+  // Close menu after clicking a navigation link
+  mainNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "Open navigation menu");
+      mainNav.classList.remove("active");
+    });
+  });
+}
+```
+
+This keeps your **Home, Blog, Categories, About, and Contact** URLs unchanged while making the header responsive.
+

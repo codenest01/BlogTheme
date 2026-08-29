@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://your-domain.example/index.html</loc></url>
+<url><loc>https://your-domain.example/pages/about.html</loc></url>
+<url><loc>https://your-domain.example/pages/contact.html</loc></url>
+<url><loc>https://your-domain.example/pages/privacy.html</loc></url>
+<url><loc>https://your-domain.example/pages/terms.html</loc></url>
+<url><loc>https://your-domain.example/pages/sitemap.html</loc></url>
+<url><loc>https://your-domain.example/pages/rise-of-edge-computing.html</loc></url>
+<url><loc>https://your-domain.example/pages/understanding-transformer-architecture.html</loc></url>
+<url><loc>https://your-domain.example/pages/build-a-writing-habit.html</loc></url>
+<url><loc>https://your-domain.example/pages/css-container-queries-guide.html</loc></url>
+<url><loc>https://your-domain.example/pages/deploy-static-site-netlify.html</loc></url>
+<url><loc>https://your-domain.example/pages/seo-for-technical-writers.html</loc></url>
+<url><loc>https://your-domain.example/pages/state-of-open-source-2026.html</loc></url>
+<url><loc>https://your-domain.example/pages/designing-for-dark-mode.html</loc></url>
+  <url>
+    <loc>https://your-domain.example/ai-news-2026-google-ai-search-gemini-ai-agents</loc>
+    <lastmod>2026-08-29</lastmod>
+  </url>
+</urlset>

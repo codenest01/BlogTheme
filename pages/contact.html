@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Signal</title>
+<meta name="description" content="Get in touch with the Signal team — pitches, corrections, partnerships, or just to say hello.">
+<link rel="canonical" href="https://your-domain.example/pages/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact Signal">
+<meta property="og:description" content="Get in touch with the Signal team.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128225;</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-root="../" data-page="contact">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="sep">/</span><span aria-current="page">Contact</span>
+    </nav>
+  </div>
+
+  <section class="page-head">
+    <div class="container">
+      <span class="section-kicker">We read everything</span>
+      <h1>Get in touch</h1>
+      <p>Pitches, corrections, partnership questions, or just a note about something we got right or wrong — this reaches the editorial team directly.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option>General question</option>
+            <option>Story pitch</option>
+            <option>Correction</option>
+            <option>Partnership</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <p id="contact-status" role="status" style="font-size:14px;"></p>
+      </form>
+
+      <div class="contact-info-card">
+        <h3 style="font-family: var(--font-mono); font-size:12.5px; text-transform:uppercase; letter-spacing:0.06em; color: var(--ink-faint); margin-bottom: 6px;">Other ways to reach us</h3>
+        <div class="ci-row"><div><div class="ci-label">Editorial</div><div>editors@signal.example</div></div></div>
+        <div class="ci-row"><div><div class="ci-label">Partnerships</div><div>partners@signal.example</div></div></div>
+        <div class="ci-row"><div><div class="ci-label">Response time</div><div>Within two business days</div></div></div>
+        <div class="ci-row"><div><div class="ci-label">Follow</div><div class="social-row" style="margin-top:8px;"></div></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

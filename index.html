@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Field Notes on Technology, AI, and the Web</title>
+<meta name="description" content="Signal is an independent publication covering technology, AI, web development, and the craft of building for the web. No hype, no filler.">
+<link rel="canonical" href="https://your-domain.example/index.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Signal — Field Notes on Technology, AI, and the Web">
+<meta property="og:description" content="An independent publication covering technology, AI, web development, and the craft of building for the web.">
+<meta property="og:image" content="https://picsum.photos/seed/signal-og/1200/630">
+<meta property="og:url" content="https://your-domain.example/index.html">
+<meta property="og:site_name" content="Signal">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Signal — Field Notes on Technology, AI, and the Web">
+<meta name="twitter:description" content="An independent publication covering technology, AI, web development, and the craft of building for the web.">
+<meta name="twitter:image" content="https://picsum.photos/seed/signal-og/1200/630">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📡</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Signal",
+  "url": "https://your-domain.example/index.html",
+  "description": "Field notes on technology, AI, and the web."
+}
+</script>
+</head>
+<body data-root="./" data-page="home">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="rule"></span> Issue 47 — Week of Aug 24</div>
+        <h1>Writing worth finishing, about the web worth building.</h1>
+        <p class="hero-lede">Signal covers technology, AI, and web development for people who read past the headline. Long-form, carefully edited, published every week — no hype, no filler.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="pages/rise-of-edge-computing.html">Start reading</a>
+          <a class="btn btn-outline" href="#categories">Browse categories</a>
+        </div>
+      </div>
+      <a class="hero-feature" href="pages/rise-of-edge-computing.html">
+        <img src="https://picsum.photos/seed/edge-computing/900/560" alt="Server racks in a small regional data center" width="900" height="560" loading="lazy">
+        <div class="hero-feature-body">
+          <div class="dispatch" data-cat="Technology"><span class="dot"></span><span class="cat-label">Technology</span><span class="sep">·</span><span>Featured</span></div>
+          <h3>The Quiet Rise of Edge Computing</h3>
+          <p>Why latency-sensitive apps are quietly moving compute back toward the user — and what it means for how we ship software.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- LATEST POSTS -->
+  <section class="section" id="latest">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Fresh off the desk</span>
+          <h2>Latest posts</h2>
+        </div>
+        <a class="btn-text" href="pages/rise-of-edge-computing.html">View all posts</a>
+      </div>
+      <div class="post-grid cols-3" data-inject="latest" data-limit="6" data-filter-target></div>
+    </div>
+  </section>
+
+  <!-- POPULAR POSTS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Reader favorites</span>
+          <h2>Popular posts</h2>
+        </div>
+      </div>
+      <div class="post-grid cols-3" data-inject="popular" data-limit="3"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Browse by topic</span>
+          <h2>Categories</h2>
+        </div>
+      </div>
+      <div class="cat-tiles" style="margin-bottom:36px;">
+        <div class="cat-tile" data-cat="Technology"><span class="dot"></span><h3>Technology</h3><span id="count-technology"></span></div>
+        <div class="cat-tile" data-cat="AI"><span class="dot"></span><h3>AI</h3><span id="count-ai"></span></div>
+        <div class="cat-tile" data-cat="Blogging"><span class="dot"></span><h3>Blogging</h3><span id="count-blogging"></span></div>
+        <div class="cat-tile" data-cat="Web Development"><span class="dot"></span><h3>Web Development</h3><span id="count-webdev"></span></div>
+        <div class="cat-tile" data-cat="Tutorials"><span class="dot"></span><h3>Tutorials</h3><span id="count-tutorials"></span></div>
+        <div class="cat-tile" data-cat="Digital Marketing"><span class="dot"></span><h3>Digital Marketing</h3><span id="count-marketing"></span></div>
+        <div class="cat-tile" data-cat="News"><span class="dot"></span><h3>News</h3><span id="count-news"></span></div>
+      </div>
+
+      <div class="filter-bar" role="group" aria-label="Filter posts by category">
+        <button class="filter-chip active" data-filter="All">All</button>
+        <button class="filter-chip" data-filter="Technology">Technology</button>
+        <button class="filter-chip" data-filter="AI">AI</button>
+        <button class="filter-chip" data-filter="Blogging">Blogging</button>
+        <button class="filter-chip" data-filter="Web Development">Web Development</button>
+        <button class="filter-chip" data-filter="Tutorials">Tutorials</button>
+        <button class="filter-chip" data-filter="Digital Marketing">Digital Marketing</button>
+        <button class="filter-chip" data-filter="News">News</button>
+      </div>
+
+      <div class="post-grid cols-3" data-inject="latest" data-limit="8" data-filter-target id="all-posts-grid"></div>
+      <div class="empty-state" id="filter-empty" style="display:none; margin-top:24px;">
+        <div class="dispatch"><span class="dot"></span><span>No results</span></div>
+        <h3>Nothing here yet</h3>
+        <p>There are no posts in this category right now — check back soon or browse another topic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT + SIDEBAR -->
+  <section class="section section-alt">
+    <div class="container content-layout">
+      <div>
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">From the editors</span>
+            <h2>Worth your time this week</h2>
+          </div>
+        </div>
+        <div class="post-grid" data-inject="featured" data-limit="2"></div>
+      </div>
+      <div id="site-sidebar"></div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter-band">
+        <h2>Get the next issue in your inbox</h2>
+        <p>One email a week: the best of Signal, plus a short note from the editors. No spam, unsubscribe anytime.</p>
+        <form class="newsletter-form-row" onsubmit="return false;">
+          <input type="email" placeholder="you@example.com" required aria-label="Email address">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p class="newsletter-fine">Read our <a href="pages/privacy.html" style="text-decoration:underline;">privacy policy</a>. Unsubscribe with one click, any time.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/ads.js"></script>
+<script>
+  window.SIGNAL.ready.then(function () {
+    var counts = {};
+    SIGNAL.POSTS.forEach(function (p) { counts[p.category] = (counts[p.category] || 0) + 1; });
+    var map = { "count-technology": "Technology", "count-ai": "AI", "count-blogging": "Blogging", "count-webdev": "Web Development", "count-tutorials": "Tutorials", "count-marketing": "Digital Marketing", "count-news": "News" };
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = (counts[map[id]] || 0) + " articles";
+    });
+  });
+</script>
+</body>
+</html>

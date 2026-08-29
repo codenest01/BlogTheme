@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Practical Guide to CSS Container Queries | Signal</title>
+<meta name="description" content="Media queries ask about the viewport. Container queries ask about the component. Here's how to actually use that difference in production layouts.">
+<link rel="canonical" href="https://your-domain.example/pages/css-container-queries-guide.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Practical Guide to CSS Container Queries">
+<meta property="og:description" content="Media queries ask about the viewport. Container queries ask about the component. Here's how to actually use that difference in production layouts.">
+<meta property="og:image" content="https://picsum.photos/seed/container-queries/1400/800">
+<meta property="og:url" content="https://your-domain.example/pages/css-container-queries-guide.html">
+<meta property="article:published_time" content="2026-04-11">
+<meta property="article:modified_time" content="2026-05-02">
+<meta property="article:author" content="Daniel Reyes">
+<meta property="article:section" content="Web Development">
+<meta property="article:tag" content="CSS"><meta property="article:tag" content="Frontend"><meta property="article:tag" content="Responsive Design">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Practical Guide to CSS Container Queries">
+<meta name="twitter:description" content="Media queries ask about the viewport. Container queries ask about the component. Here's how to actually use that difference in production layouts.">
+<meta name="twitter:image" content="https://picsum.photos/seed/container-queries/1400/800">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128225;</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "A Practical Guide to CSS Container Queries",
+  "description": "Media queries ask about the viewport. Container queries ask about the component. Here's how to actually use that difference in production layouts.",
+  "image": ["https://picsum.photos/seed/container-queries/1400/800"],
+  "author": {"@type": "Person", "name": "Daniel Reyes"},
+  "publisher": {"@type": "Organization", "name": "Signal"},
+  "datePublished": "2026-04-11",
+  "dateModified": "2026-05-02",
+  "mainEntityOfPage": "https://your-domain.example/pages/css-container-queries-guide.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://your-domain.example/index.html"},
+    {"@type": "ListItem", "position": 2, "name": "Web Development", "item": "https://your-domain.example/index.html#categories"},
+    {"@type": "ListItem", "position": 3, "name": "A Practical Guide to CSS Container Queries", "item": "https://your-domain.example/pages/css-container-queries-guide.html"}
+  ]
+}
+</script>
+</head>
+<body data-root="../" data-page="article" data-slug="css-container-queries-guide">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="sep">/</span>
+      <a href="../index.html#categories">Web Development</a><span class="sep">/</span>
+      <span aria-current="page">A Practical Guide to CSS Container Queries</span>
+    </nav>
+  </div>
+
+  <div class="container content-layout">
+    <article>
+      <div class="article-head">
+        <div class="dispatch" data-cat="Web Development"><span class="dot"></span><span class="cat-label">Web Development</span><span class="sep">·</span><span>8 min read</span><span class="sep">·</span><span>Published April 11, 2026</span><span class="sep">·</span><span>Updated May 2, 2026</span></div>
+        <h1>A Practical Guide to CSS Container Queries</h1>
+        <p class="article-lede">Media queries ask about the viewport. Container queries ask about the component. Here's how to actually use that difference in production layouts.</p>
+        <div class="article-byline">
+          <img src="https://i.pravatar.cc/88?u=Daniel Reyes" alt="" width="44" height="44" loading="lazy">
+          <div><div class="ab-name">Daniel Reyes</div><div class="ab-meta">Senior Infrastructure Engineer</div></div>
+        </div>
+      </div>
+
+      <div class="article-feature-img">
+        <img src="https://picsum.photos/seed/container-queries/1400/800" alt="Code editor showing CSS styling rules on a dark background" width="1400" height="800" loading="lazy">
+      </div>
+
+      <div class="article-body">
+        <p>For as long as responsive design has existed, it has meant one thing in practice: media queries that check the viewport width and adjust layout accordingly. That works fine when a component only ever appears in one context. It breaks down the moment the same card, the same sidebar widget, the same navigation item needs to look different depending on how much space its parent happens to give it — a sidebar on a wide screen, a full-width column on a narrow one, sometimes both on the same page.</p>
+        <p>Container queries fix this by asking a more useful question: not "how wide is the browser window," but "how wide is the box this component actually lives in."</p>
+        <h2>Setting up a containment context</h2>
+        <p>A container query only works if you tell the browser which element to measure. That means opting an ancestor into containment explicitly:</p>
+        <pre><code>.card-wrapper {
+  container-type: inline-size;
+  container-name: card;
+}</code></pre>
+        <p>container-type: inline-size tells the browser to track the element's width (the common case) and establish size containment, which also has a performance benefit — the browser can lay out that subtree somewhat independently. The container-name is optional but worth adding once you have more than one container type on a page, so your queries can target the right one.</p>
+        <h2>Writing the query itself</h2>
+        <p>Once a container is declared, any descendant can query against it using @container instead of @media:</p>
+        <pre><code>@container card (min-width: 400px) {
+  .card {
+    grid-template-columns: 120px 1fr;
+  }
+}</code></pre>
+        <p>The rule inside only applies when the nearest ancestor container named "card" is at least 400px wide — regardless of whether the browser window is 320px or 3200px. Drop that same card into a narrow sidebar and a wide main column on the same page, and each instance responds to its own available space independently.</p>
+        <blockquote>Media queries describe the page. Container queries describe the component. Most real layout problems are actually the second kind — we just didn't have a tool for it until recently.</blockquote>
+        <h2>Container query units: the other half of the feature</h2>
+        <p>Alongside @container rules, CSS added units that resolve relative to the nearest container instead of the viewport: cqw, cqh, cqi, cqb, and cqmin/cqmax for the smaller or larger of the two axes. This lets you size type or spacing proportionally to a component's own box:</p>
+        <pre><code>.card-title {
+  font-size: clamp(1rem, 4cqi, 1.5rem);
+}</code></pre>
+        <p>That heading now scales with the width of its own container, not the page — useful for components designed to be genuinely reusable across very different layout contexts.</p>
+        <h3>A common gotcha</h3>
+        <p>You can't query a container's size from an element that is itself establishing that same containment context — a container can't query itself. In practice this just means the containment declaration goes one level up from where you write your @container rules: contain on the wrapper, query from the children.</p>
+        <figure><img src="https://picsum.photos/seed/container-query-layout/1200/700" alt="The same card component responding independently to a narrow sidebar slot and a wide main-column slot." loading="lazy" width="1200" height="700"><figcaption>The same card component responding independently to a narrow sidebar slot and a wide main-column slot.</figcaption></figure>
+        <h2>Where to actually use this</h2>
+        <ul><li>Card components that appear in both grids and sidebars</li><li>Dashboard widgets that get resized or dragged into differently sized panels</li><li>Design system components meant to be dropped into arbitrary contexts by other teams</li></ul>
+        <p>You don't need to replace every media query with a container query — page-level layout decisions, like switching a whole page from a single column to a multi-column grid, are still exactly what media queries are for. The rule of thumb is simple: if the question is about the page, use a media query; if the question is about the box a component actually lives in, reach for a container query instead.</p>
+      </div>
+
+      <div class="tag-row">
+        <a class="tag" href="../index.html">#CSS</a><a class="tag" href="../index.html">#Frontend</a><a class="tag" href="../index.html">#Responsive Design</a>
+      </div>
+
+      <div class="share-row">
+        <span>Share</span>
+        <a class="btn-icon" href="#" onclick="return false;" aria-label="Share on X"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"></path></svg></a>
+        <a class="btn-icon" href="#" onclick="return false;" aria-label="Share on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="8" y1="10" x2="8" y2="16"></line><circle cx="8" cy="7" r="0.5"></circle><line x1="12" y1="16" x2="12" y2="12"></line><path d="M12 12c0-1.5 1-2 2-2s2 1 2 2v4"></path></svg></a>
+        <a class="btn-icon" href="#" onclick="return false;" aria-label="Copy link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path></svg></a>
+      </div>
+
+      <div class="author-card">
+        <img src="https://i.pravatar.cc/128?u=Daniel Reyes" alt="" width="64" height="64" loading="lazy">
+        <div>
+          <h4>Daniel Reyes</h4>
+          <p>Daniel spends his days keeping distributed systems upright and his evenings writing about why they fell over in the first place. Fifteen years in infrastructure, most of it on call.</p>
+        </div>
+      </div>
+
+      <div class="prev-next">
+        <a class="pn-card prev" href="../pages/build-a-writing-habit.html">
+          <span class="pn-label">← Previous</span>
+          <span class="pn-title">How to Build a Writing Habit That Survives Bad Weeks</span>
+        </a>
+        <a class="pn-card next" href="../pages/deploy-static-site-netlify.html">
+          <span class="pn-label">Next →</span>
+          <span class="pn-title">Deploying Your First Static Site on Netlify</span>
+        </a>
+      </div>
+
+      <div class="section-head">
+        <div><span class="section-kicker">Keep reading</span><h2>Related posts</h2></div>
+      </div>
+      <div class="related-grid">
+        <article class="card" data-cat="Web Development" data-category="Web Development"><a class="card-media" href="../pages/designing-for-dark-mode.html" tabindex="-1" aria-hidden="true"><img src="https://picsum.photos/seed/dark-mode-design/480/300" alt="" loading="lazy" width="480" height="300"><span class="card-cat-badge">Web Development</span></a><div class="card-body"><div class="dispatch"><span class="dot"></span><span>8 min read</span><span class="sep">·</span><span>February 5, 2026</span></div><h3><a href="../pages/designing-for-dark-mode.html">Designing for Dark Mode Without Breaking Everything</a></h3><p class="card-excerpt">Dark mode is not light mode with the colors inverted. Contrast, elevation, and color all behave differently once the background goes dark — here's how to design for it.</p><div class="card-foot"><div class="card-author"><img src="https://i.pravatar.cc/48?u=Priya Anand" alt="" loading="lazy" width="24" height="24">Priya Anand</div><a class="btn-text" href="../pages/designing-for-dark-mode.html">Read</a></div></div></article><article class="card" data-cat="Technology" data-category="Technology"><a class="card-media" href="../pages/rise-of-edge-computing.html" tabindex="-1" aria-hidden="true"><img src="https://picsum.photos/seed/edge-computing/480/300" alt="" loading="lazy" width="480" height="300"><span class="card-cat-badge">Technology</span></a><div class="card-body"><div class="dispatch"><span class="dot"></span><span>7 min read</span><span class="sep">·</span><span>June 2, 2026</span></div><h3><a href="../pages/rise-of-edge-computing.html">The Quiet Rise of Edge Computing</a></h3><p class="card-excerpt">Compute is creeping back toward the user. Here's why edge infrastructure is quietly becoming the default for latency-sensitive apps, and what it means for how we ship software.</p><div class="card-foot"><div class="card-author"><img src="https://i.pravatar.cc/48?u=Daniel Reyes" alt="" loading="lazy" width="24" height="24">Daniel Reyes</div><a class="btn-text" href="../pages/rise-of-edge-computing.html">Read</a></div></div></article><article class="card" data-cat="Tutorials" data-category="Tutorials"><a class="card-media" href="../pages/deploy-static-site-netlify.html" tabindex="-1" aria-hidden="true"><img src="https://picsum.photos/seed/netlify-deploy/480/300" alt="" loading="lazy" width="480" height="300"><span class="card-cat-badge">Tutorials</span></a><div class="card-body"><div class="dispatch"><span class="dot"></span><span>9 min read</span><span class="sep">·</span><span>March 27, 2026</span></div><h3><a href="../pages/deploy-static-site-netlify.html">Deploying Your First Static Site on Netlify</a></h3><p class="card-excerpt">From a folder on your laptop to a live URL with a custom domain — a step-by-step walkthrough for people who've never deployed anything before.</p><div class="card-foot"><div class="card-author"><img src="https://i.pravatar.cc/48?u=Priya Anand" alt="" loading="lazy" width="24" height="24">Priya Anand</div><a class="btn-text" href="../pages/deploy-static-site-netlify.html">Read</a></div></div></article>
+      </div>
+    </article>
+
+    <div id="site-sidebar"></div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="newsletter-band">
+        <h2>Get the next issue in your inbox</h2>
+        <p>One email a week: the best of Signal, plus a short note from the editors. No spam, unsubscribe anytime.</p>
+        <form class="newsletter-form-row" onsubmit="return false;">
+          <input type="email" placeholder="you@example.com" required aria-label="Email address">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p class="newsletter-fine">Read our <a href="../pages/privacy.html" style="text-decoration:underline;">privacy policy</a>. Unsubscribe with one click, any time.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

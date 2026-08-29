@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing for Dark Mode Without Breaking Everything | Signal</title>
+<meta name="description" content="Dark mode is not light mode with the colors inverted. Contrast, elevation, and color all behave differently once the background goes dark — here's how to design for it.">
+<link rel="canonical" href="https://your-domain.example/pages/designing-for-dark-mode.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Designing for Dark Mode Without Breaking Everything">
+<meta property="og:description" content="Dark mode is not light mode with the colors inverted. Contrast, elevation, and color all behave differently once the background goes dark — here's how to design for it.">
+<meta property="og:image" content="https://picsum.photos/seed/dark-mode-design/1400/800">
+<meta property="og:url" content="https://your-domain.example/pages/designing-for-dark-mode.html">
+<meta property="article:published_time" content="2026-02-05">
+<meta property="article:modified_time" content="2026-02-11">
+<meta property="article:author" content="Priya Anand">
+<meta property="article:section" content="Web Development">
+<meta property="article:tag" content="CSS"><meta property="article:tag" content="Design Systems"><meta property="article:tag" content="Accessibility">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Designing for Dark Mode Without Breaking Everything">
+<meta name="twitter:description" content="Dark mode is not light mode with the colors inverted. Contrast, elevation, and color all behave differently once the background goes dark — here's how to design for it.">
+<meta name="twitter:image" content="https://picsum.photos/seed/dark-mode-design/1400/800">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128225;</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Designing for Dark Mode Without Breaking Everything",
+  "description": "Dark mode is not light mode with the colors inverted. Contrast, elevation, and color all behave differently once the background goes dark \u2014 here's how to design for it.",
+  "image": ["https://picsum.photos/seed/dark-mode-design/1400/800"],
+  "author": {"@type": "Person", "name": "Priya Anand"},
+  "publisher": {"@type": "Organization", "name": "Signal"},
+  "datePublished": "2026-02-05",
+  "dateModified": "2026-02-11",
+  "mainEntityOfPage": "https://your-domain.example/pages/designing-for-dark-mode.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://your-domain.example/index.html"},
+    {"@type": "ListItem", "position": 2, "name": "Web Development", "item": "https://your-domain.example/index.html#categories"},
+    {"@type": "ListItem", "position": 3, "name": "Designing for Dark Mode Without Breaking Everything", "item": "https://your-domain.example/pages/designing-for-dark-mode.html"}
+  ]
+}
+</script>
+</head>
+<body data-root="../" data-page="article" data-slug="designing-for-dark-mode">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a><span class="sep">/</span>
+      <a href="../index.html#categories">Web Development</a><span class="sep">/</span>
+      <span aria-current="page">Designing for Dark Mode Without Breaking Everything</span>
+    </nav>
+  </div>
+
+  <div class="container content-layout">
+    <article>
+      <div class="article-head">
+        <div class="dispatch" data-cat="Web Development"><span class="dot"></span><span class="cat-label">Web Development</span><span class="sep">·</span><span>8 min read</span><span class="sep">·</span><span>Published February 5, 2026</span><span class="sep">·</span><span>Updated February 11, 2026</span></div>
+        <h1>Designing for Dark Mode Without Breaking Everything</h1>
+        <p class="article-lede">Dark mode is not light mode with the colors inverted. Contrast, elevation, and color all behave differently once the background goes dark — here's how to design for it.</p>
+        <div class="article-byline">
+          <img src="https://i.pravatar.cc/88?u=Priya Anand" alt="" width="44" height="44" loading="lazy">
+          <div><div class="ab-name">Priya Anand</div><div class="ab-meta">Machine Learning Engineer</div></div>
+        </div>
+      </div>
+
+      <div class="article-feature-img">
+        <img src="https://picsum.photos/seed/dark-mode-design/1400/800" alt="A smartphone displaying a dark-themed user interface at night" width="1400" height="800" loading="lazy">
+      </div>
+
+      <div class="article-body">
+        <p>The naive approach to dark mode is to invert everything: white backgrounds become black, black text becomes white, and every other color gets flipped or darkened by some formula. It technically works, in the sense that the page loads and nothing crashes. It also tends to look muddy, produce jarring pure-white text that vibrates against a pure-black background, and lose the visual hierarchy the light theme had. Dark mode done well is a separate design, informed by the light theme, not derived from it mechanically.</p>
+        <h2>Never use pure black, and rarely use pure white</h2>
+        <p>Pure black (#000000) against pure white text creates the highest possible contrast ratio, which sounds good until you notice it in practice: high-contrast text on a pure black background produces a halation effect, especially on OLED screens, where text appears to glow and smear slightly, which is genuinely more tiring to read than a softer combination.</p>
+        <p>A near-black background — something in the range of a very dark charcoal or navy, not true black — paired with an off-white text color (not pure white) reads more comfortably and, done right, still comfortably clears accessibility contrast requirements.</p>
+        <blockquote>Dark mode readability is not maximized by maximum contrast. It's maximized by comfortable contrast, which is a slightly lower and much more forgiving number.</blockquote>
+        <h2>Elevation works backwards in the dark</h2>
+        <p>In a light theme, raised surfaces — cards, modals, dropdowns — typically get darker shadows to imply they're floating above the background. In a dark theme, shadows barely register against a dark background, so elevation has to be communicated differently: raised surfaces should generally get lighter, not darker, moving toward a slightly brighter shade of the base color as they get closer to the "top" of the visual stack. This mirrors how light actually behaves — surfaces closer to an implied light source appear lighter.</p>
+        <h2>Saturated colors get more aggressive against dark backgrounds</h2>
+        <p>A saturated blue or red that looks calm on a white background can look aggressively bright against a dark one, because the eye's perception of a color's intensity is relative to what surrounds it. The fix is usually to desaturate and slightly lighten accent colors for dark mode rather than reusing the exact same hex values from the light theme — the same brand color, adjusted, not abandoned.</p>
+        <figure><img src="https://picsum.photos/seed/dark-mode-palette/1200/700" alt="The same accent color family, adjusted for comfortable contrast against a dark background rather than reused unchanged." loading="lazy" width="1200" height="700"><figcaption>The same accent color family, adjusted for comfortable contrast against a dark background rather than reused unchanged.</figcaption></figure>
+        <h2>Build it with CSS custom properties from the start</h2>
+        <p>Retrofitting dark mode onto a codebase full of hardcoded hex values is painful. Defining a full palette as CSS custom properties, then overriding that set of variables under a data-theme or class selector, keeps every component automatically correct without touching component-level CSS at all:</p>
+        <pre><code>:root {
+  --bg: #F5F4EF;
+  --text: #171A1F;
+}
+[data-theme=&quot;dark&quot;] {
+  --bg: #14161C;
+  --text: #EDEBE4;
+}
+body { background: var(--bg); color: var(--text); }</code></pre>
+        <h2>Respect the system preference, but let people override it</h2>
+        <p>Reading prefers-color-scheme and defaulting to it is good manners — someone who has already told their operating system they prefer dark mode shouldn't have to tell every website separately. But always provide an explicit toggle too, store the choice, and let it override the system preference, because plenty of people want a different theme for a specific site than they use everywhere else, particularly for reading-heavy pages late at night.</p>
+        <h2>Test it on real content, not a placeholder screenshot</h2>
+        <p>Dark mode bugs hide in the content that designers don't usually screenshot: a chart with colors chosen for a white background, an embedded image with a white border baked in, a code block syntax theme that assumes a light background. Before calling a dark theme done, look at it with real long-form content, real data visualizations, and real user-generated content, not just the marketing page it was designed on.</p>
+      </div>
+
+      <div class="tag-row">
+        <a class="tag" href="../index.html">#CSS</a><a class="tag" href="../index.html">#Design Systems</a><a class="tag" href="../index.html">#Accessibility</a>
+      </div>
+
+      <div class="share-row">
+        <span>Share</span>
+        <a class="btn-icon" href="#" onclick="return false;" aria-label="Share on X"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l16 16M20 4L4 20"></path></svg></a>
+        <a class="btn-icon" href="#" onclick="return false;" aria-label="Share on LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="8" y1="10" x2="8" y2="16"></line><circle cx="8" cy="7" r="0.5"></circle><line x1="12" y1="16" x2="12" y2="12"></line><path d="M12 12c0-1.5 1-2 2-2s2 1 2 2v4"></path></svg></a>
+        <a class="btn-icon" href="#" onclick="return false;" aria-label="Copy link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"></path><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"></path></svg></a>
+      </div>
+
+      <div class="author-card">
+        <img src="https://i.pravatar.cc/128?u=Priya Anand" alt="" width="64" height="64" loading="lazy">
+        <div>
+          <h4>Priya Anand</h4>
+          <p>Priya builds machine learning systems by day and explains them without jargon by night. She previously trained models for a translation startup acquired in 2023.</p>
+        </div>
+      </div>
+
+      <div class="prev-next">
+        <a class="pn-card prev" href="../pages/state-of-open-source-2026.html">
+          <span class="pn-label">← Previous</span>
+          <span class="pn-title">The State of Open Source in 2026</span>
+        </a>
+        <a class="pn-card next" href="../pages/rise-of-edge-computing.html">
+          <span class="pn-label">Next →</span>
+          <span class="pn-title">The Quiet Rise of Edge Computing</span>
+        </a>
+      </div>
+
+      <div class="section-head">
+        <div><span class="section-kicker">Keep reading</span><h2>Related posts</h2></div>
+      </div>
+      <div class="related-grid">
+        <article class="card" data-cat="Web Development" data-category="Web Development"><a class="card-media" href="../pages/css-container-queries-guide.html" tabindex="-1" aria-hidden="true"><img src="https://picsum.photos/seed/container-queries/480/300" alt="" loading="lazy" width="480" height="300"><span class="card-cat-badge">Web Development</span></a><div class="card-body"><div class="dispatch"><span class="dot"></span><span>8 min read</span><span class="sep">·</span><span>April 11, 2026</span></div><h3><a href="../pages/css-container-queries-guide.html">A Practical Guide to CSS Container Queries</a></h3><p class="card-excerpt">Media queries ask about the viewport. Container queries ask about the component. Here's how to actually use that difference in production layouts.</p><div class="card-foot"><div class="card-author"><img src="https://i.pravatar.cc/48?u=Daniel Reyes" alt="" loading="lazy" width="24" height="24">Daniel Reyes</div><a class="btn-text" href="../pages/css-container-queries-guide.html">Read</a></div></div></article><article class="card" data-cat="Technology" data-category="Technology"><a class="card-media" href="../pages/rise-of-edge-computing.html" tabindex="-1" aria-hidden="true"><img src="https://picsum.photos/seed/edge-computing/480/300" alt="" loading="lazy" width="480" height="300"><span class="card-cat-badge">Technology</span></a><div class="card-body"><div class="dispatch"><span class="dot"></span><span>7 min read</span><span class="sep">·</span><span>June 2, 2026</span></div><h3><a href="../pages/rise-of-edge-computing.html">The Quiet Rise of Edge Computing</a></h3><p class="card-excerpt">Compute is creeping back toward the user. Here's why edge infrastructure is quietly becoming the default for latency-sensitive apps, and what it means for how we ship software.</p><div class="card-foot"><div class="card-author"><img src="https://i.pravatar.cc/48?u=Daniel Reyes" alt="" loading="lazy" width="24" height="24">Daniel Reyes</div><a class="btn-text" href="../pages/rise-of-edge-computing.html">Read</a></div></div></article><article class="card" data-cat="Tutorials" data-category="Tutorials"><a class="card-media" href="../pages/deploy-static-site-netlify.html" tabindex="-1" aria-hidden="true"><img src="https://picsum.photos/seed/netlify-deploy/480/300" alt="" loading="lazy" width="480" height="300"><span class="card-cat-badge">Tutorials</span></a><div class="card-body"><div class="dispatch"><span class="dot"></span><span>9 min read</span><span class="sep">·</span><span>March 27, 2026</span></div><h3><a href="../pages/deploy-static-site-netlify.html">Deploying Your First Static Site on Netlify</a></h3><p class="card-excerpt">From a folder on your laptop to a live URL with a custom domain — a step-by-step walkthrough for people who've never deployed anything before.</p><div class="card-foot"><div class="card-author"><img src="https://i.pravatar.cc/48?u=Priya Anand" alt="" loading="lazy" width="24" height="24">Priya Anand</div><a class="btn-text" href="../pages/deploy-static-site-netlify.html">Read</a></div></div></article>
+      </div>
+    </article>
+
+    <div id="site-sidebar"></div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="newsletter-band">
+        <h2>Get the next issue in your inbox</h2>
+        <p>One email a week: the best of Signal, plus a short note from the editors. No spam, unsubscribe anytime.</p>
+        <form class="newsletter-form-row" onsubmit="return false;">
+          <input type="email" placeholder="you@example.com" required aria-label="Email address">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+        <p class="newsletter-fine">Read our <a href="../pages/privacy.html" style="text-decoration:underline;">privacy policy</a>. Unsubscribe with one click, any time.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/ads.js"></script>
+</body>
+</html>

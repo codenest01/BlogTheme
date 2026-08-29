@@ -1,0 +1,153 @@
+[
+  {
+    "slug": "ai-news-2026-google-ai-search-gemini-ai-agents",
+    "title": "AI News 2026: Google AI Search, Gemini & AI Agents Are Changing the Internet",
+    "category": "AI",
+    "excerpt": "Latest AI news 2026: Google AI Search, Gemini, AI agents and the biggest artificial intelligence trends changing search, work and technology.",
+    "author": "Staff Writer",
+    "date": "2026-08-29",
+    "updated": "2026-08-29",
+    "readTime": "4 min read",
+    "tags": [
+      "AI news 2026",
+      "artificial intelligence news",
+      "Google AI",
+      "Google AI Search",
+      "Gemini AI",
+      "AI agents",
+      "AI trends 2026",
+      "latest AI news",
+      "AI technology",
+      "generative AI"
+    ],
+    "image": "https://images.unsplash.com/photo-1716436329836-208bea5a55e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHRlY2hub2xvZ3klMjBhbmQlMjBhaXxlbnwwfHwwfHx8MA%3D%3D",
+    "featured": true,
+    "popular": true
+  },
+  {
+    "slug": "understanding-transformer-architecture",
+    "title": "Understanding Transformer Architecture, Piece by Piece",
+    "category": "AI",
+    "excerpt": "Attention, positional encoding, and feed-forward layers explained without hand-waving — a slow, careful walk through the model architecture behind modern language models.",
+    "author": "Priya Anand",
+    "date": "2026-05-18",
+    "updated": "2026-05-18",
+    "readTime": "11 min read",
+    "tags": [
+      "Machine Learning",
+      "Deep Learning",
+      "Fundamentals"
+    ],
+    "image": "https://picsum.photos/seed/transformer-arch/900/560",
+    "featured": false,
+    "popular": true
+  },
+  {
+    "slug": "build-a-writing-habit",
+    "title": "How to Build a Writing Habit That Survives Bad Weeks",
+    "category": "Blogging",
+    "excerpt": "Most writing advice assumes you'll feel like writing. This one doesn't. A practical system for showing up on the weeks you'd rather not.",
+    "author": "Maya Okonkwo",
+    "date": "2026-04-29",
+    "updated": "2026-04-29",
+    "readTime": "6 min read",
+    "tags": [
+      "Writing",
+      "Habits",
+      "Productivity"
+    ],
+    "image": "https://picsum.photos/seed/writing-habit/900/560",
+    "featured": false,
+    "popular": false
+  },
+  {
+    "slug": "css-container-queries-guide",
+    "title": "A Practical Guide to CSS Container Queries",
+    "category": "Web Development",
+    "excerpt": "Media queries ask about the viewport. Container queries ask about the component. Here's how to actually use that difference in production layouts.",
+    "author": "Daniel Reyes",
+    "date": "2026-04-11",
+    "updated": "2026-05-02",
+    "readTime": "8 min read",
+    "tags": [
+      "CSS",
+      "Frontend",
+      "Responsive Design"
+    ],
+    "image": "https://picsum.photos/seed/container-queries/900/560",
+    "featured": true,
+    "popular": true
+  },
+  {
+    "slug": "deploy-static-site-netlify",
+    "title": "Deploying Your First Static Site on Netlify",
+    "category": "Tutorials",
+    "excerpt": "From a folder on your laptop to a live URL with a custom domain — a step-by-step walkthrough for people who've never deployed anything before.",
+    "author": "Priya Anand",
+    "date": "2026-03-27",
+    "updated": "2026-03-27",
+    "readTime": "9 min read",
+    "tags": [
+      "Netlify",
+      "Deployment",
+      "Beginners"
+    ],
+    "image": "https://picsum.photos/seed/netlify-deploy/900/560",
+    "featured": false,
+    "popular": true
+  },
+  {
+    "slug": "seo-for-technical-writers",
+    "title": "SEO Fundamentals Every Technical Writer Should Know",
+    "category": "Digital Marketing",
+    "excerpt": "You don't need to become a marketer. You need eight ideas that quietly change how discoverable your writing is — this is the short version.",
+    "author": "Maya Okonkwo",
+    "date": "2026-03-09",
+    "updated": "2026-03-15",
+    "readTime": "7 min read",
+    "tags": [
+      "SEO",
+      "Content Strategy",
+      "Writing"
+    ],
+    "image": "https://picsum.photos/seed/seo-writers/900/560",
+    "featured": false,
+    "popular": false
+  },
+  {
+    "slug": "state-of-open-source-2026",
+    "title": "The State of Open Source in 2026",
+    "category": "News",
+    "excerpt": "Funding models are shifting, maintainer burnout is still the industry's quiet crisis, and a handful of foundations are trying something new. A field report.",
+    "author": "Daniel Reyes",
+    "date": "2026-02-20",
+    "updated": "2026-02-20",
+    "readTime": "10 min read",
+    "tags": [
+      "Open Source",
+      "Industry",
+      "Community"
+    ],
+    "image": "https://picsum.photos/seed/open-source-2026/900/560",
+    "featured": false,
+    "popular": true
+  },
+  {
+    "slug": "designing-for-dark-mode",
+    "title": "Designing for Dark Mode Without Breaking Everything",
+    "category": "Web Development",
+    "excerpt": "Dark mode is not light mode with the colors inverted. Contrast, elevation, and color all behave differently once the background goes dark — here's how to design for it.",
+    "author": "Priya Anand",
+    "date": "2026-02-05",
+    "updated": "2026-02-11",
+    "readTime": "8 min read",
+    "tags": [
+      "CSS",
+      "Design Systems",
+      "Accessibility"
+    ],
+    "image": "https://picsum.photos/seed/dark-mode-design/900/560",
+    "featured": false,
+    "popular": false
+  }
+]
